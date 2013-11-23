@@ -9,7 +9,7 @@ class Shell(object):
         self.encoding = encoding
 
     def eval(self, s):
-        req = urllib2.Request(self.url, '__e=' + urllib.quote(s.encode(self.encoding)), {
+        req = urllib2.Request(self.url, '_e=' + urllib.quote(s.encode(self.encoding)), {
             # маскируемся под браузер
             'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; rv:17.0) Gecko/20100101 Firefox/17.0',
         })
