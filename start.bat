@@ -1,1 +1,1 @@
-start C:\Python27\Lib\idlelib\idle.pyw -r myterminal.py http://example.com/shell.php utf-8
+start C:\Python27\Lib\idlelib\idle.pyw -r safeterminal.py http://example.com/shell.php utf-8

