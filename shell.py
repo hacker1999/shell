@@ -12,6 +12,8 @@ class Shell(object):
         return res.read().decode(self.encoding)
 
 def main(url, encoding):
+    import os
+    os.system('cls')
     shell = Shell(url, encoding)
     print("""Python Remote Shell ver 0.1
 Copyright 2013 tz4678@gmail.com""")
