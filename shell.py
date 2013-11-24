@@ -17,6 +17,7 @@ class Shell(object):
         return res.read().decode(self.encoding)
 
 def main(url, encoding):
+    shell = Shell(url, encoding)
     import os
     os.system('cls')
     print("""#############################################################################
@@ -25,7 +26,6 @@ def main(url, encoding):
 # Copyright 2013 tz4678@gmail.com                                           #
 #                                                                           #
 #############################################################################""")
-    shell = Shell(url, encoding)
     while True:
         cmd = raw_input('shell> ').decode(sys.stdin.encoding)
         try:
