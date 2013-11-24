@@ -19,9 +19,13 @@ class Shell(object):
 def main(url, encoding):
     import os
     os.system('cls')
+    print("""#############################################################################
+#                                                                           #
+# Python Remote Shell ver 0.1                                               #
+# Copyright 2013 tz4678@gmail.com                                           #
+#                                                                           #
+#############################################################################""")
     shell = Shell(url, encoding)
-    print("""Python Remote Shell ver 0.1
-Copyright 2013 tz4678@gmail.com""")
     while True:
         cmd = raw_input('shell> ').decode(sys.stdin.encoding)
         try:
